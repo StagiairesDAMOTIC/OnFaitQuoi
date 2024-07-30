@@ -46,9 +46,10 @@ def extract_activity(url):
     latitude, longitude = None, None
     for script in scripts:
         script_content = script.string
-        if script_content and 'latitude' in script_content and 'longitude' in script_content:
+        if script_content:
             latitude, longitude = extract_coordinates_from_script(script_content)
-            break
+            if latitude and longitude:
+                break
 
     activity = {
         "name": name,
@@ -64,7 +65,7 @@ for url in urls:
     extract_activity(url)
 
 # Enregistrer les données dans un fichier JSON
-with open('activities3.json', 'w', encoding='utf-8') as f:
+with open('activities2.json', 'w', encoding='utf-8') as f:
     json.dump(activities, f, ensure_ascii=False, indent=4)
 
-print("Les données ont été extraites et enregistrées dans 'activities3.json'")
+print("Les données ont été extraites et enregistrées dans 'activities2.json'")
