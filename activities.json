@@ -1,29 +1,14 @@
 [
-    {
-        "name": "Activity 1",
-        "latitude": 48.8566,
-        "longitude": 2.3522,
-        "opening_hours": {
-            "open": "09:00",
-            "close": "18:00"
-        }
-    },
-    {
-        "name": "Activity 2",
-        "latitude": 48.8606,
-        "longitude": 2.3376,
-        "opening_hours": {
-            "open": "10:00",
-            "close": "19:00"
-        }
-    },
-    {
-        "name": "Activity 3",
-        "latitude": 48.8584,
-        "longitude": 2.2945,
-        "opening_hours": {
-            "open": "08:00",
-            "close": "17:00"
-        }
-    }
+  {
+    "name": "Sun Force",
+    "latitude": 48.8584,
+    "longitude": 2.2945,
+    "opening_hours": { "open": "08:00", "close": "17:00" }
+  },
+  {
+    "name": "ENERGIE SPORT DANSE CAVALAIRE",
+    "latitude": 39.0,
+    "longitude": 2.1,
+    "opening_hours": { "open": "08:00", "close": "17:00" }
+  }
 ]
