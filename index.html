@@ -7,34 +7,39 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <button onclick="findMe()">Me Localiser</button>
-    <select id="location-select" onchange="updateLocation()">
-      <option value="current">Ma Position</option>
-      <option value="city1">Sainte-Maxime</option>
-      <option value="city2">Ville 2</option>
-    </select>
-    <select id="time-select" onchange="updateTime()">
-      <option value="now">Heure du téléphone (Maintenant)</option>
-      <option value="custom">Choisir l'heure</option>
-    </select>
-    <input
-      type="time"
-      id="custom-time"
-      onchange="updateCustomTime()"
-      style="display: none"
-    />
-    <select id="category-select" onchange="filterByCategory()">
-      <option value="all">Toutes les catégories</option>
-      <option value="restaurant">Restaurant</option>
-      <option value="événement">Événement</option>
-      <option value="plage">Plage</option>
-      <option value="salle de sport">Salle de sport</option>
-    </select>
-    <div id="map"></div>
-    <div id="places-container">
-      <div id="places"></div>
+    <div class="burger-menu" onclick="toggleMenu()">&#9776; Menu</div>
+    <div class="selector">
+      <button onclick="findMe()">Me Localiser</button>
+      <select id="location-select" onchange="updateLocation()">
+        <option value="current">Ma Position</option>
+        <option value="city1">Sainte-Maxime</option>
+        <option value="city2">Ville 2</option>
+      </select>
+      <select id="time-select" onchange="updateTime()">
+        <option value="now">Heure du téléphone (Maintenant)</option>
+        <option value="custom">Choisir l'heure</option>
+      </select>
+      <input
+        type="time"
+        id="custom-time"
+        onchange="updateCustomTime()"
+        style="display: none"
+      />
+      <select id="category-select" onchange="filterByCategory()">
+        <option value="all">Toutes les catégories</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="événement">Événement</option>
+        <option value="plage">Plage</option>
+        <option value="salle de sport">Salle de sport</option>
+      </select>
+    </div>
+    <div class="presentation">
+      <div id="map"></div>
+      <div id="places-container">
+        <div id="places"></div>
+      </div>
     </div>
     <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0d1GmNiS0EkotkLbfbqQJGu8cCp12nzo&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
   </body>
 </html>
