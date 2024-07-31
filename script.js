@@ -174,6 +174,11 @@ function displayActivities(activities) {
   });
 }
 
+function toggleMenu() {
+  const selector = document.querySelector(".selector");
+  selector.style.display = selector.style.display === "flex" ? "none" : "flex";
+}
+
 function showError(error) {
   switch (error.code) {
     case error.PERMISSION_DENIED:
