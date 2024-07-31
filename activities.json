@@ -1,85 +1,85 @@
 [
   {
-    "name": "Sun Force",
-    "latitude": 48.8584,
-    "longitude": 2.2945,
+    "name": "Plage de la Nartelle",
+    "latitude": 43.3077,
+    "longitude": 6.6386,
     "category": "plage",
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "opening_hours": { "open": "08:00", "close": "20:00" }
   },
   {
-    "name": "ENERGIE SPORT DANSE CAVALAIRE",
-    "latitude": 39.0,
-    "longitude": 2.1,
+    "name": "Gym Sainte-Maxime",
+    "latitude": 43.3095,
+    "longitude": 6.6378,
     "category": "salle de sport",
-    "opening_hours": { "open": "09:00", "close": "18:00" }
+    "opening_hours": { "open": "06:00", "close": "22:00" }
   },
   {
-    "name": "Le Petit Restaurant",
-    "latitude": 48.8566,
-    "longitude": 2.3522,
+    "name": "Le WYC",
+    "latitude": 43.3121,
+    "longitude": 6.6392,
     "category": "restaurant",
     "opening_hours": { "open": "12:00", "close": "23:00" }
   },
   {
-    "name": "Festival de Musique",
-    "latitude": 48.8606,
-    "longitude": 2.3376,
+    "name": "Festival de Musique Sainte-Maxime",
+    "latitude": 43.3101,
+    "longitude": 6.6401,
     "category": "événement",
     "opening_hours": { "open": "15:00", "close": "23:00" }
   },
   {
-    "name": "Beach Club",
-    "latitude": 48.8589,
-    "longitude": 2.2936,
+    "name": "Beach Club Maxime",
+    "latitude": 43.3087,
+    "longitude": 6.6415,
     "category": "plage",
     "opening_hours": { "open": "10:00", "close": "19:00" }
   },
   {
-    "name": "Fit Gym",
-    "latitude": 48.8575,
-    "longitude": 2.2988,
+    "name": "FitMax",
+    "latitude": 43.309,
+    "longitude": 6.636,
     "category": "salle de sport",
     "opening_hours": { "open": "07:00", "close": "21:00" }
   },
   {
-    "name": "Gala Event",
-    "latitude": 48.8578,
-    "longitude": 2.2955,
+    "name": "Gala Event Sainte-Maxime",
+    "latitude": 43.3112,
+    "longitude": 6.6358,
     "category": "événement",
     "opening_hours": { "open": "16:00", "close": "22:00" }
   },
   {
-    "name": "Healthy Restaurant",
-    "latitude": 48.8573,
-    "longitude": 2.2995,
+    "name": "Healthy Food Sainte-Maxime",
+    "latitude": 43.3082,
+    "longitude": 6.6398,
     "category": "restaurant",
     "opening_hours": { "open": "11:00", "close": "22:00" }
   },
   {
-    "name": "Yoga Center",
-    "latitude": 48.8569,
-    "longitude": 2.2965,
+    "name": "Yoga Maxime",
+    "latitude": 43.3108,
+    "longitude": 6.641,
     "category": "salle de sport",
     "opening_hours": { "open": "06:00", "close": "20:00" }
   },
   {
-    "name": "Night Beach Party",
-    "latitude": 48.8576,
-    "longitude": 2.2928,
+    "name": "Night Beach Party Sainte-Maxime",
+    "latitude": 43.3079,
+    "longitude": 6.638,
     "category": "plage",
     "opening_hours": { "open": "18:00", "close": "02:00" }
   },
   {
-    "name": "Art Exhibition",
-    "latitude": 48.858,
-    "longitude": 2.294,
+    "name": "Art Exhibition Sainte-Maxime",
+    "latitude": 43.3093,
+    "longitude": 6.6355,
     "category": "événement",
     "opening_hours": { "open": "09:00", "close": "17:00" }
   },
   {
-    "name": "Gourmet Bistro",
-    "latitude": 48.8583,
-    "longitude": 2.2975,
+    "name": "Gourmet Bistro Maxime",
+    "latitude": 43.3115,
+    "longitude": 6.6373,
     "category": "restaurant",
     "opening_hours": { "open": "12:00", "close": "23:00" }
   }
