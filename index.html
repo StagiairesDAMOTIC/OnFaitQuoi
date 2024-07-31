@@ -8,6 +8,21 @@
   </head>
   <body>
     <button onclick="findMe()">Me Localiser</button>
+    <select id="location-select" onchange="updateLocation()">
+      <option value="current">Ma Position</option>
+      <option value="city1">Sainte-Maxime</option>
+      <option value="city2">Ville 2</option>
+    </select>
+    <select id="time-select" onchange="updateTime()">
+      <option value="now">Heure du téléphone (Maintenant)</option>
+      <option value="custom">Choisir l'heure</option>
+    </select>
+    <input
+      type="time"
+      id="custom-time"
+      onchange="updateCustomTime()"
+      style="display: none"
+    />
     <select id="category-select" onchange="filterByCategory()">
       <option value="all">Toutes les catégories</option>
       <option value="restaurant">Restaurant</option>

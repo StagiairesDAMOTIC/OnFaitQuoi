@@ -4,83 +4,179 @@
     "latitude": 43.3077,
     "longitude": 6.6386,
     "category": "plage",
-    "opening_hours": { "open": "08:00", "close": "20:00" }
+    "opening_hours": {
+      "Monday": { "open": "08:00", "close": "20:00" },
+      "Tuesday": { "open": "08:00", "close": "20:00" },
+      "Wednesday": { "open": "08:00", "close": "20:00" },
+      "Thursday": { "open": "08:00", "close": "20:00" },
+      "Friday": { "open": "08:00", "close": "20:00" },
+      "Saturday": { "open": "08:00", "close": "22:00" },
+      "Sunday": { "open": "08:00", "close": "22:00" }
+    }
   },
   {
     "name": "Gym Sainte-Maxime",
     "latitude": 43.3095,
     "longitude": 6.6378,
     "category": "salle de sport",
-    "opening_hours": { "open": "06:00", "close": "22:00" }
+    "opening_hours": {
+      "Monday": { "open": "06:00", "close": "22:00" },
+      "Tuesday": { "open": "06:00", "close": "22:00" },
+      "Wednesday": { "open": "06:00", "close": "22:00" },
+      "Thursday": { "open": "06:00", "close": "22:00" },
+      "Friday": { "open": "06:00", "close": "22:00" },
+      "Saturday": { "open": "08:00", "close": "20:00" },
+      "Sunday": { "open": "08:00", "close": "20:00" }
+    }
   },
   {
     "name": "Le WYC",
     "latitude": 43.3121,
     "longitude": 6.6392,
     "category": "restaurant",
-    "opening_hours": { "open": "12:00", "close": "23:00" }
+    "opening_hours": {
+      "Monday": { "open": "12:00", "close": "23:00" },
+      "Tuesday": { "open": "12:00", "close": "23:00" },
+      "Wednesday": { "open": "12:00", "close": "23:00" },
+      "Thursday": { "open": "12:00", "close": "23:00" },
+      "Friday": { "open": "12:00", "close": "23:00" },
+      "Saturday": { "open": "12:00", "close": "01:00" },
+      "Sunday": { "open": "12:00", "close": "01:00" }
+    }
   },
   {
     "name": "Festival de Musique Sainte-Maxime",
     "latitude": 43.3101,
     "longitude": 6.6401,
     "category": "événement",
-    "opening_hours": { "open": "15:00", "close": "23:00" }
+    "opening_hours": {
+      "Monday": { "open": "15:00", "close": "23:00" },
+      "Tuesday": { "open": "15:00", "close": "23:00" },
+      "Wednesday": { "open": "15:00", "close": "23:00" },
+      "Thursday": { "open": "15:00", "close": "23:00" },
+      "Friday": { "open": "15:00", "close": "23:00" },
+      "Saturday": { "open": "15:00", "close": "23:00" },
+      "Sunday": { "open": "15:00", "close": "23:00" }
+    }
   },
   {
     "name": "Beach Club Maxime",
     "latitude": 43.3087,
     "longitude": 6.6415,
     "category": "plage",
-    "opening_hours": { "open": "10:00", "close": "19:00" }
+    "opening_hours": {
+      "Monday": { "open": "10:00", "close": "19:00" },
+      "Tuesday": { "open": "10:00", "close": "19:00" },
+      "Wednesday": { "open": "10:00", "close": "19:00" },
+      "Thursday": { "open": "10:00", "close": "19:00" },
+      "Friday": { "open": "10:00", "close": "19:00" },
+      "Saturday": { "open": "10:00", "close": "22:00" },
+      "Sunday": { "open": "10:00", "close": "22:00" }
+    }
   },
   {
     "name": "FitMax",
     "latitude": 43.309,
     "longitude": 6.636,
     "category": "salle de sport",
-    "opening_hours": { "open": "07:00", "close": "21:00" }
+    "opening_hours": {
+      "Monday": { "open": "07:00", "close": "21:00" },
+      "Tuesday": { "open": "07:00", "close": "21:00" },
+      "Wednesday": { "open": "07:00", "close": "21:00" },
+      "Thursday": { "open": "07:00", "close": "21:00" },
+      "Friday": { "open": "07:00", "close": "21:00" },
+      "Saturday": { "open": "08:00", "close": "20:00" },
+      "Sunday": { "open": "08:00", "close": "20:00" }
+    }
   },
   {
     "name": "Gala Event Sainte-Maxime",
     "latitude": 43.3112,
     "longitude": 6.6358,
     "category": "événement",
-    "opening_hours": { "open": "16:00", "close": "22:00" }
+    "opening_hours": {
+      "Monday": { "open": "16:00", "close": "22:00" },
+      "Tuesday": { "open": "16:00", "close": "22:00" },
+      "Wednesday": { "open": "16:00", "close": "22:00" },
+      "Thursday": { "open": "16:00", "close": "22:00" },
+      "Friday": { "open": "16:00", "close": "22:00" },
+      "Saturday": { "open": "16:00", "close": "22:00" },
+      "Sunday": { "open": "16:00", "close": "22:00" }
+    }
   },
   {
     "name": "Healthy Food Sainte-Maxime",
     "latitude": 43.3082,
     "longitude": 6.6398,
     "category": "restaurant",
-    "opening_hours": { "open": "11:00", "close": "22:00" }
+    "opening_hours": {
+      "Monday": { "open": "11:00", "close": "22:00" },
+      "Tuesday": { "open": "11:00", "close": "22:00" },
+      "Wednesday": { "open": "11:00", "close": "22:00" },
+      "Thursday": { "open": "11:00", "close": "22:00" },
+      "Friday": { "open": "11:00", "close": "22:00" },
+      "Saturday": { "open": "11:00", "close": "23:00" },
+      "Sunday": { "open": "11:00", "close": "23:00" }
+    }
   },
   {
     "name": "Yoga Maxime",
     "latitude": 43.3108,
     "longitude": 6.641,
     "category": "salle de sport",
-    "opening_hours": { "open": "06:00", "close": "20:00" }
+    "opening_hours": {
+      "Monday": { "open": "06:00", "close": "20:00" },
+      "Tuesday": { "open": "06:00", "close": "20:00" },
+      "Wednesday": { "open": "06:00", "close": "20:00" },
+      "Thursday": { "open": "06:00", "close": "20:00" },
+      "Friday": { "open": "06:00", "close": "20:00" },
+      "Saturday": { "open": "08:00", "close": "18:00" },
+      "Sunday": { "open": "08:00", "close": "18:00" }
+    }
   },
   {
     "name": "Night Beach Party Sainte-Maxime",
     "latitude": 43.3079,
     "longitude": 6.638,
     "category": "plage",
-    "opening_hours": { "open": "18:00", "close": "02:00" }
+    "opening_hours": {
+      "Monday": { "open": "18:00", "close": "02:00" },
+      "Tuesday": { "open": "18:00", "close": "02:00" },
+      "Wednesday": { "open": "18:00", "close": "02:00" },
+      "Thursday": { "open": "18:00", "close": "02:00" },
+      "Friday": { "open": "18:00", "close": "02:00" },
+      "Saturday": { "open": "18:00", "close": "02:00" },
+      "Sunday": { "open": "18:00", "close": "02:00" }
+    }
   },
   {
     "name": "Art Exhibition Sainte-Maxime",
     "latitude": 43.3093,
     "longitude": 6.6355,
     "category": "événement",
-    "opening_hours": { "open": "09:00", "close": "17:00" }
+    "opening_hours": {
+      "Monday": { "open": "09:00", "close": "17:00" },
+      "Tuesday": { "open": "09:00", "close": "17:00" },
+      "Wednesday": { "open": "09:00", "close": "17:00" },
+      "Thursday": { "open": "09:00", "close": "17:00" },
+      "Friday": { "open": "09:00", "close": "17:00" },
+      "Saturday": { "open": "10:00", "close": "18:00" },
+      "Sunday": { "open": "10:00", "close": "18:00" }
+    }
   },
   {
     "name": "Gourmet Bistro Maxime",
     "latitude": 43.3115,
     "longitude": 6.6373,
     "category": "restaurant",
-    "opening_hours": { "open": "12:00", "close": "23:00" }
+    "opening_hours": {
+      "Monday": { "open": "12:00", "close": "23:00" },
+      "Tuesday": { "open": "12:00", "close": "23:00" },
+      "Wednesday": { "open": "12:00", "close": "23:00" },
+      "Thursday": { "open": "12:00", "close": "23:00" },
+      "Friday": { "open": "12:00", "close": "23:00" },
+      "Saturday": { "open": "12:00", "close": "01:00" },
+      "Sunday": { "open": "12:00", "close": "01:00" }
+    }
   }
 ]

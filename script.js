@@ -1,27 +1,67 @@
 let allActivities = [];
 let map;
+let userPosition = { lat: 0, lng: 0 };
+let customTime = null;
+
+const cityLocations = {
+  city1: { lat: 43.3075, lng: 6.6378 }, // Sainte-Maxime
+  city2: { lat: 43.5789, lng: 7.1285 }, // Ville 2 (exemple)
+};
 
 function findMe() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
+    navigator.geolocation.getCurrentPosition((position) => {
+      userPosition = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      showPosition(userPosition);
+    }, showError);
   } else {
     alert("La géolocalisation n'est pas supportée par ce navigateur.");
   }
 }
 
-function showPosition(position) {
-  var lat = position.coords.latitude;
-  var lng = position.coords.longitude;
-  var location = new google.maps.LatLng(lat, lng);
+function updateLocation() {
+  const locationSelect = document.getElementById("location-select").value;
+  if (locationSelect === "current") {
+    findMe();
+  } else {
+    userPosition = cityLocations[locationSelect];
+    showPosition(userPosition);
+  }
+}
 
+function updateTime() {
+  const timeSelect = document.getElementById("time-select").value;
+  const customTimeInput = document.getElementById("custom-time");
+  if (timeSelect === "now") {
+    customTime = null;
+    customTimeInput.style.display = "none";
+    filterByCategory();
+  } else {
+    customTimeInput.style.display = "inline";
+  }
+}
+
+function updateCustomTime() {
+  const customTimeInput = document.getElementById("custom-time").value;
+  const [hours, minutes] = customTimeInput.split(":");
+  customTime = new Date();
+  customTime.setHours(hours);
+  customTime.setMinutes(minutes);
+  filterByCategory();
+}
+
+function showPosition(position) {
   var mapOptions = {
-    center: location,
+    center: position,
     zoom: 15,
   };
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
   var marker = new google.maps.Marker({
-    position: location,
+    position: position,
     map: map,
     title: "Vous êtes ici",
   });
@@ -31,8 +71,8 @@ function showPosition(position) {
     .then((data) => {
       allActivities = data.map((activity) => {
         activity.distance = getDistance(
-          lat,
-          lng,
+          position.lat,
+          position.lng,
           activity.latitude,
           activity.longitude
         );
@@ -63,11 +103,12 @@ function deg2rad(deg) {
 }
 
 function isOpen(activity) {
-  const now = new Date();
-  const [openHour, openMinute] = activity.opening_hours.open
+  const now = customTime || new Date();
+  const day = now.toLocaleString("en-us", { weekday: "long" });
+  const [openHour, openMinute] = activity.opening_hours[day].open
     .split(":")
     .map(Number);
-  const [closeHour, closeMinute] = activity.opening_hours.close
+  const [closeHour, closeMinute] = activity.opening_hours[day].close
     .split(":")
     .map(Number);
   const openTime = new Date(
