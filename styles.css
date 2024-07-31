@@ -1,41 +1,71 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; /* Ensure the body takes the full height */
+  overflow: hidden; /* Prevent body scrolling */
 }
 
 button {
-    margin: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  z-index: 10;
 }
 
 #map {
-    width: 100%;
-    height: 60vh;
+  width: 100%;
+  height: 60%;
+  z-index: 1;
+}
+
+#places-container {
+  width: 100%;
+  height: 40%;
+  overflow-y: auto;
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  border-top: 1px solid #ccc;
 }
 
 #places {
-    width: 100%;
-    padding: 20px;
-    background-color: #f9f9f9;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#places p {
-    margin: 10px 0;
-    font-size: 14px;
+.place-box {
+  width: 90%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.place-box p {
+  margin: 5px 0;
+  font-size: 14px;
+  text-align: center;
 }
 
 @media (min-width: 600px) {
-    button {
-        font-size: 18px;
-        padding: 12px 24px;
-    }
+  button {
+    font-size: 18px;
+    padding: 12px 24px;
+  }
 
-    #places p {
-        font-size: 16px;
-    }
+  .place-box p {
+    font-size: 16px;
+  }
 }
