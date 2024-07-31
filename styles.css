@@ -9,7 +9,8 @@ body {
   overflow: hidden; /* Prevent body scrolling */
 }
 
-button {
+button,
+select {
   margin: 20px;
   padding: 10px 20px;
   font-size: 16px;
@@ -18,7 +19,7 @@ button {
 
 #map {
   width: 100%;
-  height: 60%;
+  height: 50%;
   z-index: 1;
 }
 
@@ -60,7 +61,8 @@ button {
 }
 
 @media (min-width: 600px) {
-  button {
+  button,
+  select {
     font-size: 18px;
     padding: 12px 24px;
   }

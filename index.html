@@ -8,6 +8,13 @@
   </head>
   <body>
     <button onclick="findMe()">Me Localiser</button>
+    <select id="category-select" onchange="filterByCategory()">
+      <option value="all">Toutes les catégories</option>
+      <option value="restaurant">Restaurant</option>
+      <option value="événement">Événement</option>
+      <option value="plage">Plage</option>
+      <option value="salle de sport">Salle de sport</option>
+    </select>
     <div id="map"></div>
     <div id="places-container">
       <div id="places"></div>

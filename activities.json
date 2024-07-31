@@ -3,72 +3,84 @@
     "name": "Sun Force",
     "latitude": 48.8584,
     "longitude": 2.2945,
+    "category": "plage",
     "opening_hours": { "open": "08:00", "close": "17:00" }
   },
   {
     "name": "ENERGIE SPORT DANSE CAVALAIRE",
     "latitude": 39.0,
     "longitude": 2.1,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "category": "salle de sport",
+    "opening_hours": { "open": "09:00", "close": "18:00" }
   },
   {
-    "name": "Sun Force",
-    "latitude": 48.8584,
-    "longitude": 2.2945,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Le Petit Restaurant",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "category": "restaurant",
+    "opening_hours": { "open": "12:00", "close": "23:00" }
   },
   {
-    "name": "ENERGIE SPORT DANSE CAVALAIRE",
-    "latitude": 39.0,
-    "longitude": 2.1,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Festival de Musique",
+    "latitude": 48.8606,
+    "longitude": 2.3376,
+    "category": "événement",
+    "opening_hours": { "open": "15:00", "close": "23:00" }
   },
   {
-    "name": "Sun Force",
-    "latitude": 48.8584,
-    "longitude": 2.2945,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Beach Club",
+    "latitude": 48.8589,
+    "longitude": 2.2936,
+    "category": "plage",
+    "opening_hours": { "open": "10:00", "close": "19:00" }
   },
   {
-    "name": "ENERGIE SPORT DANSE CAVALAIRE",
-    "latitude": 39.0,
-    "longitude": 2.1,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Fit Gym",
+    "latitude": 48.8575,
+    "longitude": 2.2988,
+    "category": "salle de sport",
+    "opening_hours": { "open": "07:00", "close": "21:00" }
   },
   {
-    "name": "Sun Force",
-    "latitude": 48.8584,
-    "longitude": 2.2945,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Gala Event",
+    "latitude": 48.8578,
+    "longitude": 2.2955,
+    "category": "événement",
+    "opening_hours": { "open": "16:00", "close": "22:00" }
   },
   {
-    "name": "ENERGIE SPORT DANSE CAVALAIRE",
-    "latitude": 39.0,
-    "longitude": 2.1,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Healthy Restaurant",
+    "latitude": 48.8573,
+    "longitude": 2.2995,
+    "category": "restaurant",
+    "opening_hours": { "open": "11:00", "close": "22:00" }
   },
   {
-    "name": "Sun Force",
-    "latitude": 48.8584,
-    "longitude": 2.2945,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Yoga Center",
+    "latitude": 48.8569,
+    "longitude": 2.2965,
+    "category": "salle de sport",
+    "opening_hours": { "open": "06:00", "close": "20:00" }
   },
   {
-    "name": "ENERGIE SPORT DANSE CAVALAIRE",
-    "latitude": 39.0,
-    "longitude": 2.1,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Night Beach Party",
+    "latitude": 48.8576,
+    "longitude": 2.2928,
+    "category": "plage",
+    "opening_hours": { "open": "18:00", "close": "02:00" }
   },
   {
-    "name": "Sun Force",
-    "latitude": 48.8584,
-    "longitude": 2.2945,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Art Exhibition",
+    "latitude": 48.858,
+    "longitude": 2.294,
+    "category": "événement",
+    "opening_hours": { "open": "09:00", "close": "17:00" }
   },
   {
-    "name": "ENERGIE SPORT DANSE CAVALAIRE",
-    "latitude": 39.0,
-    "longitude": 2.1,
-    "opening_hours": { "open": "08:00", "close": "17:00" }
+    "name": "Gourmet Bistro",
+    "latitude": 48.8583,
+    "longitude": 2.2975,
+    "category": "restaurant",
+    "opening_hours": { "open": "12:00", "close": "23:00" }
   }
 ]
