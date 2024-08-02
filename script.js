@@ -195,3 +195,9 @@ function showError(error) {
       break;
   }
 }
+function startSite() {
+  document.getElementById('welcome-modal').style.display = 'none';
+  document.body.style.overflow = 'auto'; // Réactiver le défilement
+  findMe();
+}
+
