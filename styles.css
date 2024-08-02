@@ -36,6 +36,13 @@ body {
   font-size: 16px;
 }
 
+
+.main-menu {
+  margin: 20px;
+}
+.main-menu img{
+  height: 4em ;
+}
 .burger-menu {
   display: none;
   font-size: 30px;
@@ -46,8 +53,8 @@ body {
 .selector {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  height: 10%;
+  justify-content:unsafe center;
+  height: fit-content ;
   flex-wrap: wrap;
 }
 
@@ -63,6 +70,8 @@ select {
   margin: 10px;
   padding: 10px 20px;
   font-size: 16px;
+  cursor: pointer;
+  height: 4%;
 }
 
 #custom-time {
