@@ -2,6 +2,7 @@ let allActivities = [];
 let map;
 let userPosition = { lat: 0, lng: 0 };
 let customTime = null;
+let markers = []; // Array to hold the map markers
 
 const cityLocations = {
   city1: { lat: 43.3075, lng: 6.6378 }, // Sainte-Maxime
@@ -79,7 +80,7 @@ function showPosition(position) {
         activity.isOpen = isOpen(activity);
         return activity;
       });
-      filterByCategory();
+      filterByCategory(); // Apply initial filtering
     });
 }
 
@@ -139,6 +140,7 @@ function filterByCategory() {
   }
 
   displayActivities(filteredActivities);
+  updateMapMarkers(filteredActivities); // Update the map markers based on the filtered activities
 }
 
 function displayActivities(activities) {
@@ -166,11 +168,22 @@ function displayActivities(activities) {
       map.setZoom(15);
     });
     placesList.appendChild(placeBox);
-    new google.maps.Marker({
+  });
+}
+
+function updateMapMarkers(activities) {
+  // Clear existing markers
+  markers.forEach((marker) => marker.setMap(null));
+  markers = [];
+
+  // Add new markers
+  activities.forEach((activity) => {
+    const marker = new google.maps.Marker({
       position: { lat: activity.latitude, lng: activity.longitude },
       map: map,
       title: activity.name,
     });
+    markers.push(marker);
   });
 }
 
@@ -195,9 +208,9 @@ function showError(error) {
       break;
   }
 }
+
 function startSite() {
-  document.getElementById('welcome-modal').style.display = 'none';
-  document.body.style.overflow = 'auto'; // Réactiver le défilement
+  document.getElementById("welcome-modal").style.display = "none";
+  document.body.style.overflow = "auto"; // Réactiver le défilement
   findMe();
 }
-
