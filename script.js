@@ -87,7 +87,7 @@ function showPosition(position) {
 function getDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
   const dLat = deg2rad(lat2 - lat1);
-  const dLon = deg2rad(lon2 - lon1);
+  const dLon = deg2rad(lat2 - lon1);
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(deg2rad(lat1)) *
@@ -183,8 +183,33 @@ function updateMapMarkers(activities) {
       map: map,
       title: activity.name,
     });
+
+    // Add click event listener to marker to open InfoWindow
+    google.maps.event.addListener(marker, "click", () => {
+      showInfoWindow(activity);
+    });
+
     markers.push(marker);
   });
+}
+
+function showInfoWindow(activity) {
+  const infoContainer = document.getElementById('info-container');
+  const infoDetails = document.getElementById('info-details');
+
+  infoDetails.innerHTML = `
+    <img src="${activity.photo}" alt="${activity.name}">
+    <h2>${activity.name}</h2>
+    <p>Catégorie: ${activity.category}</p>
+    <p>${activity.distance.toFixed(2)} km</p>
+    <p>${activity.isOpen ? "Ouvert" : "Fermé"}</p>
+  `;
+
+  infoContainer.style.display = 'block';
+}
+
+function closeInfo() {
+  document.getElementById('info-container').style.display = 'none';
 }
 
 function toggleMenu() {
@@ -210,7 +235,7 @@ function showError(error) {
 }
 
 function startSite() {
-  document.getElementById("welcome-modal").style.display = "none";
-  document.body.style.overflow = "auto"; // Réactiver le défilement
+  document.getElementById('welcome-modal').style.display = 'none';
+  document.body.style.overflow = 'auto'; // Réactiver le défilement
   findMe();
 }
