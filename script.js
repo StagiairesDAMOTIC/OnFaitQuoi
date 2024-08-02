@@ -204,7 +204,6 @@ function updateMapMarkers(activities) {
 
     markers.push(marker);
   });
-    markers
 }
 
 function showInfoWindow(activity) {
@@ -212,7 +211,7 @@ function showInfoWindow(activity) {
   const infoDetails = document.getElementById('info-details');
 
   infoDetails.innerHTML = `
-    <img src="${activity.photo}" alt="${activity.name}>
+    <img src="${activity.photo}" alt="${activity.name}">
     <h2>${activity.name}</h2>
     <p>Catégorie: ${activity.category}</p>
     <p>${activity.distance.toFixed(2)} km</p>
