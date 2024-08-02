@@ -1,64 +1,49 @@
 import requests
 from bs4 import BeautifulSoup
-import json
+import csv
 
-# URL des pages d'activités à scraper
-urls = [
-    'https://guidedugolfe.com/en/spot/sun-force',
-    'https://guidedugolfe.com/en/spot/energie-sport-danse-cavalaire',
-    'https://guidedugolfe.com/en/spot/energie-sport-danse-gassin',
-    'https://guidedugolfe.com/en/spot/pampelonne-nautic-club',
-    'https://guidedugolfe.com/en/spot/wellness-saint-tropez1'
-]
+# URL of the page to scrape
+url = 'https://guidedugolfe.com/spot/'
 
-activities = []
+# Function to extract information from each spot
+def extract_spot_info(spot):
+    name = spot.find('p', class_='text-sm mt-0.5 3xs:font-semibold tracking-tight leading-tight line-clamp-1').text.strip()
+    description = spot.find('p', class_='text-gray-500 text-xs 3xs:text-sm font-light tracking-tight leading-tight mt-0.5 3xs:mt-1 2xs:mt-2 line-clamp-2 sm:line-clamp-3 text-elipsis overflow-hidden').text.strip()
+    location = spot.find('p', class_='truncate font-light text-gray-500').text.strip()
+    status = spot.find('p', class_='text-green-600 mr-1').text.strip()
+    href = spot['href']
+    image_tag = spot.find('img', class_='h-full w-full rounded-md object-cover')
+    image = image_tag['src'] if image_tag else ''
 
-def safe_float(value):
-    try:
-        return float(value)
-    except ValueError:
-        return None
+    return {
+        'name': name,
+        'description': description,
+        'location': location,
+        'status': status,
+        'url': href,
+        'image': image
+    }
 
-def extract_activity(url):
+# Function to scrape the page and save data to CSV
+def scrape_to_csv(url, output_csv):
     response = requests.get(url)
     if response.status_code != 200:
-        print(f"Erreur lors de la requête vers {url}: {response.status_code}")
+        print(f"Error fetching {url}: {response.status_code}")
         return
 
     soup = BeautifulSoup(response.content, 'html.parser')
+    spots = soup.select('a[title][class="relative bg-white rounded-md h-32 3xs:h-40 w-full shadow-md drop-shadow flex flex-row"]')
 
-    # Extractions basées sur la structure des pages du site
-    name = soup.select_one('h1').text.strip()
-    address = soup.select_one('.location').text.strip() if soup.select_one('.location') else "N/A"
-    
-    opening_hours_div = soup.select_one('.hours')
-    opening_hours = {}
-    if opening_hours_div:
-        for line in opening_hours_div.select('p'):
-            parts = line.text.split(': ')
-            if len(parts) == 2:
-                day, hours = parts
-                opening_hours[day.strip()] = hours.strip()
+    with open(output_csv, 'w', newline='', encoding='utf-8') as csvfile:
+        fieldnames = ['name', 'description', 'location', 'status', 'url', 'image']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
 
-    # Localisation et autres détails
-    latitude = soup.select_one('.latitude').text.strip() if soup.select_one('.latitude') else "N/A"
-    longitude = soup.select_one('.longitude').text.strip() if soup.select_one('.longitude') else "N/A"
+        for spot in spots:
+            spot_info = extract_spot_info(spot)
+            writer.writerow(spot_info)
 
-    activity = {
-        "name": name,
-        "address": address,
-        "latitude": safe_float(latitude),
-        "longitude": safe_float(longitude),
-        "opening_hours": opening_hours
-    }
+    print(f"Data has been extracted and saved to '{output_csv}'")
 
-    activities.append(activity)
-
-for url in urls:
-    extract_activity(url)
-
-# Enregistrer les données dans un fichier JSON
-with open('activities2.json', 'w', encoding='utf-8') as f:
-    json.dump(activities, f, ensure_ascii=False, indent=4)
-
-print("Les données ont été extraites et enregistrées dans 'activities2.json'")
+# Call the function to scrape the page and save data to CSV
+scrape_to_csv(url, 'spots.csv')

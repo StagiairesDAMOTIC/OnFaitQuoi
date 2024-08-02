@@ -114,8 +114,10 @@ select {
 }
 
 .logo {
-  height: auto;
-  width: 25px;
+  height: 5vh;
+  align-items: center;
+  justify-content: center;
+  width: auto;
 }
 
 .place-box:hover,
