@@ -113,6 +113,12 @@ select {
   text-align: center;
 }
 
+.place-box:hover,
+.place-box.active {
+  background-color: #ccc;
+  color: #000;
+}
+
 @media (max-width: 768px) {
   .selector {
     display: none;
@@ -167,4 +173,8 @@ select {
   width: 100%;
   height: auto;
   margin-bottom: 10px;
+}
+#marker:active {
+  height: 150%;
+  width: 150%;
 }

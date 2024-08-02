@@ -152,7 +152,7 @@ function displayActivities(activities) {
 
   var placesList = document.getElementById("places");
   placesList.innerHTML = "";
-  sortedActivities.forEach((activity) => {
+  sortedActivities.forEach((activity, index) => {
     let placeBox = document.createElement("div");
     placeBox.classList.add("place-box");
     placeBox.innerHTML = `
@@ -166,9 +166,21 @@ function displayActivities(activities) {
         new google.maps.LatLng(activity.latitude, activity.longitude)
       );
       map.setZoom(15);
+      showInfoWindow(activity); // Show info window when clicking the place box
+      highlightPlaceBox(placeBox); // Highlight the place box when clicked
     });
     placesList.appendChild(placeBox);
+    activity.placeBox = placeBox; // Link the place box to the activity
   });
+}
+
+function highlightPlaceBox(placeBox) {
+  // Remove highlight from all place boxes
+  document.querySelectorAll(".place-box").forEach((box) => {
+    box.classList.remove("active"); // Remove active class
+  });
+  // Highlight the clicked place box
+  placeBox.classList.add("active"); // Add active class
 }
 
 function updateMapMarkers(activities) {
@@ -187,10 +199,12 @@ function updateMapMarkers(activities) {
     // Add click event listener to marker to open InfoWindow
     google.maps.event.addListener(marker, "click", () => {
       showInfoWindow(activity);
+      highlightPlaceBox(activity.placeBox); // Highlight the place box when clicking the marker
     });
 
     markers.push(marker);
   });
+    markers
 }
 
 function showInfoWindow(activity) {
@@ -198,7 +212,7 @@ function showInfoWindow(activity) {
   const infoDetails = document.getElementById('info-details');
 
   infoDetails.innerHTML = `
-    <img src="${activity.photo}" alt="${activity.name}">
+    <img src="${activity.photo}" alt="${activity.name}>
     <h2>${activity.name}</h2>
     <p>Catégorie: ${activity.category}</p>
     <p>${activity.distance.toFixed(2)} km</p>
