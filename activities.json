@@ -178,5 +178,20 @@
       "Saturday": { "open": "12:00", "close": "01:00" },
       "Sunday": { "open": "12:00", "close": "01:00" }
     }
+  },
+  {
+    "name": "Au petit cul d'Eloi",
+    "latitude": 43.3095,
+    "longitude": 6.6378,
+    "category": "prostituée",
+    "opening_hours": {
+      "Monday": { "open": "20:00", "close": "06:00" },
+      "Tuesday": { "open": "20:00", "close": "06:00" },
+      "Wednesday": { "open": "20:00", "close": "06:00" },
+      "Thursday": { "open": "20:00", "close": "06:00" },
+      "Friday": { "open": "20:00", "close": "06:00" },
+      "Saturday": { "open": "20:00", "close": "06:00" },
+      "Sunday": { "open": "20:00", "close": "06:00" }
+    }
   }
 ]
