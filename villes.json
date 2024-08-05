@@ -1,5 +1,50 @@
 {
-    "city1": { "lat": 43.3075, "lng": 6.6378 },
-    "city2": { "lat": 43.5789, "lng": 7.1285 }
+  "Saint-Tropez": {
+    "lat": 43.2699,
+    "lng": 6.6407
+  },
+  "Sainte-Maxime": {
+    "lat": 43.3075,
+    "lng": 6.6378
+  },
+  "Gassin": {
+    "lat": 43.2276,
+    "lng": 6.5853
+  },
+  "Ramatuelle": {
+    "lat": 43.2154,
+    "lng": 6.6139
+  },
+  "La Croix-Valmer": {
+    "lat": 43.2014,
+    "lng": 6.5668
+  },
+  "Grimaud": {
+    "lat": 43.2806,
+    "lng": 6.5227
+  },
+  "Cogolin": {
+    "lat": 43.2522,
+    "lng": 6.5297
+  },
+  "La Garde-Freinet": {
+    "lat": 43.3075,
+    "lng": 6.4659
+  },
+  "Le Plan-de-la-Tour": {
+    "lat": 43.3499,
+    "lng": 6.5199
+  },
+  "Le Lavandou": {
+    "lat": 43.1357,
+    "lng": 6.3688
+  },
+  "Rayol-Canadel-sur-Mer": {
+    "lat": 43.1619,
+    "lng": 6.4742
+  },
+  "Cavalaire-sur-Mer": {
+    "lat": 43.1728,
+    "lng": 6.5291
   }
-  
+}

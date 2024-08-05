@@ -30,15 +30,11 @@ def extract_info_from_url(url):
 
 def update_csv_with_extracted_info(input_csv, output_csv):
     data = pd.read_csv(input_csv)
-    print("Columns available in CSV:", data.columns)  # Debugging line to print column names
-    
-    # Add new columns for the extracted information
     data['Google Maps Link'] = ''
     data['Hours'] = ''
 
     for index, row in data.iterrows():
-        url = row['url']  # Use the correct column name based on your CSV file
-        print(f"Processing URL: {url}")  # Debugging line to print the current URL being processed
+        url = row['URL']  # Assurez-vous que la colonne contenant les URL est nommée 'URL' dans votre CSV
         google_maps_link, hours = extract_info_from_url(url)
         data.at[index, 'Google Maps Link'] = google_maps_link
         data.at[index, 'Hours'] = hours

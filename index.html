@@ -10,7 +10,7 @@
     <div id="welcome-modal" class="modal">
       <div class="modal-content">
         <h1>Bienvenue</h1>
-        <img class="logo" src="img/damotic.jpeg" id="logo"/>
+        <img class="logo" src="img/damotic.jpeg" id="logo" />
         <p>Cliquez sur le bouton ci-dessous pour accéder au site.</p>
         <button onclick="startSite()">Me Localiser</button>
       </div>
@@ -22,9 +22,9 @@
         <button onclick="findMe()">Me Localiser</button>
         <select id="location-select" onchange="updateLocation()">
           <option value="current">Ma Position</option>
-          <option value="city1">Sainte-Maxime</option>
-          <option value="city2">Antibes</option>
+          <!-- Les options seront ajoutées dynamiquement ici par JavaScript -->
         </select>
+
         <select id="time-select" onchange="updateTime()">
           <option value="now">Heure du téléphone (Maintenant)</option>
           <option value="custom">Choisir l'heure</option>
@@ -60,6 +60,10 @@
       </div>
     </div>
     <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0d1GmNiS0EkotkLbfbqQJGu8cCp12nzo&libraries=places"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0d1GmNiS0EkotkLbfbqQJGu8cCp12nzo&libraries=places"
+      async
+      defer
+    ></script>
   </body>
 </html>
