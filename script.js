@@ -1,41 +1,19 @@
-let cityLocations = {}; // Initialize an empty dictionary to hold city locations
+let allActivities = [];
+let map;
+let userPosition = { lat: 0, lng: 0 };
+let customTime = null;
+let markers = []; // Array to hold the map markers
+let cityLocations = {}; // Initialize an empty object to hold city locations
 
 // Load city locations from villes.json
 fetch("villes.json")
   .then((response) => response.json())
   .then((data) => {
     cityLocations = data;
-    populateCitySelect(); // Populate the city select menu with options
   })
   .catch((error) => {
     console.error("Error loading city locations:", error);
   });
-
-function populateCitySelect() {
-  const locationSelect = document.getElementById("location-select");
-  Object.keys(cityLocations).forEach((city) => {
-    const option = document.createElement("option");
-    option.value = city; // Use city name as the value
-    option.textContent = city; // Use city name as the display text
-    locationSelect.appendChild(option);
-  });
-}
-
-function updateLocation() {
-  const locationSelect = document.getElementById("location-select");
-  const selectedCity = locationSelect.value; // Get the selected city's name
-
-  if (selectedCity === "current") {
-    findMe();
-  } else {
-    const cityCoords = cityLocations[selectedCity];
-    userPosition = {
-      lat: cityCoords.lat,
-      lng: cityCoords.lng,
-    };
-    showPosition(userPosition);
-  }
-}
 
 function findMe() {
   if (navigator.geolocation) {
@@ -51,14 +29,45 @@ function findMe() {
   }
 }
 
+function updateLocation() {
+  const locationSelect = document.getElementById("location-select").value;
+  if (locationSelect === "current") {
+    findMe();
+  } else {
+    userPosition = cityLocations[locationSelect];
+    showPosition(userPosition);
+  }
+}
+
+function updateTime() {
+  const timeSelect = document.getElementById("time-select").value;
+  const customTimeInput = document.getElementById("custom-time");
+  if (timeSelect === "now") {
+    customTime = null;
+    customTimeInput.style.display = "none";
+    filterByCategory();
+  } else {
+    customTimeInput.style.display = "inline";
+  }
+}
+
+function updateCustomTime() {
+  const customTimeInput = document.getElementById("custom-time").value;
+  const [hours, minutes] = customTimeInput.split(":");
+  customTime = new Date();
+  customTime.setHours(hours);
+  customTime.setMinutes(minutes);
+  filterByCategory();
+}
+
 function showPosition(position) {
-  const mapOptions = {
+  var mapOptions = {
     center: position,
     zoom: 15,
   };
 
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  const marker = new google.maps.Marker({
+  var marker = new google.maps.Marker({
     position: position,
     map: map,
     title: "Vous êtes ici",
@@ -84,7 +93,7 @@ function showPosition(position) {
 function getDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
   const dLat = deg2rad(lat2 - lat1);
-  const dLon = deg2rad(lat2 - lon1);
+  const dLon = deg2rad(lon2 - lon1);
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(deg2rad(lat1)) *
@@ -147,10 +156,10 @@ function displayActivities(activities) {
     return a.distance - b.distance;
   });
 
-  const placesList = document.getElementById("places");
+  var placesList = document.getElementById("places");
   placesList.innerHTML = "";
   sortedActivities.forEach((activity, index) => {
-    const placeBox = document.createElement("div");
+    let placeBox = document.createElement("div");
     placeBox.classList.add("place-box");
     placeBox.innerHTML = `
             <p><strong>${activity.name}</strong></p>

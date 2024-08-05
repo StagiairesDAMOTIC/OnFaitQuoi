@@ -22,9 +22,9 @@
         <button onclick="findMe()">Me Localiser</button>
         <select id="location-select" onchange="updateLocation()">
           <option value="current">Ma Position</option>
-          <!-- Les options seront ajoutées dynamiquement ici par JavaScript -->
+          <option value="city1">Sainte-Maxime</option>
+          <option value="city2">Antibes</option>
         </select>
-
         <select id="time-select" onchange="updateTime()">
           <option value="now">Heure du téléphone (Maintenant)</option>
           <option value="custom">Choisir l'heure</option>
@@ -60,10 +60,6 @@
       </div>
     </div>
     <script src="script.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0d1GmNiS0EkotkLbfbqQJGu8cCp12nzo&libraries=places"
-      async
-      defer
-    ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0d1GmNiS0EkotkLbfbqQJGu8cCp12nzo&libraries=places"></script>
   </body>
 </html>
