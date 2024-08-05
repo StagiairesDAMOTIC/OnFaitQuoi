@@ -3,11 +3,17 @@ let map;
 let userPosition = { lat: 0, lng: 0 };
 let customTime = null;
 let markers = []; // Array to hold the map markers
+let cityLocations = {}; // Initialize an empty object to hold city locations
 
-const cityLocations = {
-  city1: { lat: 43.3075, lng: 6.6378 }, // Sainte-Maxime
-  city2: { lat: 43.5789, lng: 7.1285 }, // Ville 2 (exemple)
-};
+// Load city locations from villes.json
+fetch('villes.json')
+  .then(response => response.json())
+  .then(data => {
+    cityLocations = data;
+  })
+  .catch(error => {
+    console.error('Error loading city locations:', error);
+  });
 
 function findMe() {
   if (navigator.geolocation) {
@@ -87,7 +93,7 @@ function showPosition(position) {
 function getDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
   const dLat = deg2rad(lat2 - lat1);
-  const dLon = deg2rad(lat2 - lon1);
+  const dLon = deg2rad(lon2 - lon1);
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(deg2rad(lat1)) *
@@ -211,11 +217,12 @@ function showInfoWindow(activity) {
   const infoDetails = document.getElementById('info-details');
 
   infoDetails.innerHTML = `
-    <img src="${activity.photo}" alt="${activity.name}">
     <h2>${activity.name}</h2>
+    <img src="${activity.photo}" alt="${activity.name}">
     <p>Catégorie: ${activity.category}</p>
     <p>${activity.distance.toFixed(2)} km</p>
     <p>${activity.isOpen ? "Ouvert" : "Fermé"}</p>
+    <p>Contact: ${activity.contact}</p>
   `;
 
   infoContainer.style.display = 'block';
