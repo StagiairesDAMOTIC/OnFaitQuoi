@@ -3,7 +3,7 @@ import csv
 import os
 
 # Path of the local HTML file
-file_path = r'C:\Users\Eloi\Documents\GitHub\StagiairesDAMOTIC\Guide du Golfe de Saint-Tropez.html'
+file_path = r'C:\Users\Eloi\Documents\GitHub\StagiairesDAMOTIC\OnFaitQuoi\Fichiers de scrap\Guide du Golfe de Saint-Tropez.html'
 
 # Normalize the file path to avoid issues with backslashes
 file_path = os.path.normpath(file_path)
