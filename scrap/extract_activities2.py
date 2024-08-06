@@ -19,7 +19,8 @@ def extract_info_from_url(url):
 
         # Extract opening hours
         hours = None
-        hours_element = soup.find('p', class_='opening-hours')  # Adjust class based on your HTML structure
+        # Adjust the selector based on your HTML structure
+        hours_element = soup.find('div', class_='item-list__hours')  # Update with the correct class or tag
         if hours_element:
             hours = hours_element.get_text(strip=True)
 
@@ -30,11 +31,15 @@ def extract_info_from_url(url):
 
 def update_csv_with_extracted_info(input_csv, output_csv):
     data = pd.read_csv(input_csv)
+    print("Columns available in CSV:", data.columns)  # Debugging line to print column names
+    
+    # Add new columns for the extracted information
     data['Google Maps Link'] = ''
     data['Hours'] = ''
 
     for index, row in data.iterrows():
-        url = row['URL']  # Assurez-vous que la colonne contenant les URL est nommée 'URL' dans votre CSV
+        url = row['url']  # Use the correct column name based on your CSV file
+        print(f"Processing URL: {url}")  # Debugging line to print the current URL being processed
         google_maps_link, hours = extract_info_from_url(url)
         data.at[index, 'Google Maps Link'] = google_maps_link
         data.at[index, 'Hours'] = hours
