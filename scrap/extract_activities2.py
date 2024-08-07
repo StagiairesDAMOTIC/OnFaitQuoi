@@ -1,7 +1,6 @@
 import csv
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
 import time
 
 def extract_info_from_url(url):
@@ -18,34 +17,60 @@ def extract_info_from_url(url):
                 break
 
         # Extract opening hours
-        hours = None
-        # Adjust the selector based on your HTML structure
-        hours_element = soup.find('div', class_='item-list__hours')  # Update with the correct class or tag
-        if hours_element:
-            hours = hours_element.get_text(strip=True)
+        hours = {}
+        days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+        hours_elements = soup.select('dl.divide-y > div')
+        
+        for element in hours_elements:
+            day_element = element.find('dt')
+            if day_element:
+                day = day_element.get_text(strip=True)
+                times = element.find_all('span', class_='text-cyan-600')
+                if times:
+                    hours[day] = [time.get_text(strip=True) for time in times]
+                else:
+                    hours[day] = ['Fermé']
 
-        return google_maps_link, hours
+        # Format hours into the desired format
+        hours_str = ""
+        for day in days:
+            if day in hours:
+                if hours[day] == ['Fermé']:
+                    hours_str += f"{day}(Fermé)/"
+                else:
+                    if len(hours[day]) == 1:
+                        hours_str += f"{day}({hours[day][0]})/"
+                    elif len(hours[day]) >= 2:
+                        hours_str += f"{day}({hours[day][0]}-{hours[day][1]})/"
+            else:
+                hours_str += f"{day}(Inconnu)/"
+
+        hours_str = hours_str.rstrip('/')
+
+        return google_maps_link, hours_str
     except requests.exceptions.RequestException as e:
         print(f"Error connecting to {url}: {e}")
         return None, None
 
 def update_csv_with_extracted_info(input_csv, output_csv):
-    data = pd.read_csv(input_csv)
-    print("Columns available in CSV:", data.columns)  # Debugging line to print column names
-    
-    # Add new columns for the extracted information
-    data['Google Maps Link'] = ''
-    data['Hours'] = ''
+    with open(input_csv, mode='r', newline='', encoding='utf-8') as infile, \
+         open(output_csv, mode='w', newline='', encoding='utf-8') as outfile:
 
-    for index, row in data.iterrows():
-        url = row['url']  # Use the correct column name based on your CSV file
-        print(f"Processing URL: {url}")  # Debugging line to print the current URL being processed
-        google_maps_link, hours = extract_info_from_url(url)
-        data.at[index, 'Google Maps Link'] = google_maps_link
-        data.at[index, 'Hours'] = hours
-        time.sleep(1)  # Sleep to respect rate limits
+        reader = csv.DictReader(infile)
+        fieldnames = reader.fieldnames + ['Google Maps Link', 'Hours']
+        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
 
-    data.to_csv(output_csv, index=False)
+        writer.writeheader()
+
+        for row in reader:
+            url = row['url']
+            print(f"Processing URL: {url}")
+            google_maps_link, hours = extract_info_from_url(url)
+            row['Google Maps Link'] = google_maps_link
+            row['Hours'] = hours
+            writer.writerow(row)
+            time.sleep(1)  # Sleep to respect rate limits
+
     print(f"CSV file updated and saved as {output_csv}")
 
 # Paths to the CSV files
