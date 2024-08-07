@@ -36,7 +36,7 @@ def parse_hours(hours_str):
                 day = day.strip()
                 times = times.strip(')')
                 if times == "Fermé":
-                    hours_dict[day] = {"open": None, "close": None}
+                    hours_dict[day] = {"open": "00:00", "close": "00:00"}
                 else:
                     open_time, close_time = times.split('-')
                     hours_dict[day] = {"open": open_time, "close": close_time}
