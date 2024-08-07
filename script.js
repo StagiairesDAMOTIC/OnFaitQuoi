@@ -10,10 +10,44 @@ fetch("villes.json")
   .then((response) => response.json())
   .then((data) => {
     cityLocations = data;
+    populateCitySelect(); // Populate the city select menu with options
   })
   .catch((error) => {
     console.error("Error loading city locations:", error);
   });
+
+function populateCitySelect() {
+  const locationSelect = document.getElementById("location-select");
+  Object.keys(cityLocations).forEach((city) => {
+    const option = document.createElement("option");
+    option.value = city; // Use city name as the value
+    option.textContent = city; // Use city name as the display text
+    locationSelect.appendChild(option);
+    setMyLocationTo(); // Set the default location to "current"
+  });
+}
+
+function updateLocation() {
+  const locationSelect = document.getElementById("location-select");
+  const selectedCity = locationSelect.value; // Get the selected city's name
+
+  if (selectedCity === "current") {
+    findMe();
+  } else {
+    const cityCoords = cityLocations[selectedCity];
+    userPosition = {
+      lat: cityCoords.lat,
+      lng: cityCoords.lng,
+    };
+    showPosition(userPosition);
+  }
+}
+
+function setMyLocationTo() {
+  const locationSelect = document.getElementById("location-select"); //location select element is selected and stored in locationSelect variable
+  locationSelect.value = "current"; //location select value is set to "current"
+  updateLocation(); //updateLocation function is called to update the location accordingly to the selected value
+} // Set the location select to "current" and update the location accordingly when the page loads
 
 function findMe() {
   if (navigator.geolocation) {
@@ -26,16 +60,6 @@ function findMe() {
     }, showError);
   } else {
     alert("La géolocalisation n'est pas supportée par ce navigateur.");
-  }
-}
-
-function updateLocation() {
-  const locationSelect = document.getElementById("location-select").value;
-  if (locationSelect === "current") {
-    findMe();
-  } else {
-    userPosition = cityLocations[locationSelect];
-    showPosition(userPosition);
   }
 }
 
