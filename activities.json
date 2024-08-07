@@ -15,6 +15,21 @@
     }
   },
   {
+    "name": "Association La Ressource Naturelle",
+    "latitude": 43.22618129326075,
+    "longitude": 6.5863343159584575,
+    "opening_hours": {
+      "Monday": { "open": "00:00", "close": "20:00" },
+      "Tuesday": { "open": "08:00", "close": "20:00" },
+      "Wednesday": { "open": "00:01", "close": "00:02" },
+      "Thursday": { "open": "08:00", "close": "20:00" },
+      "Friday": { "open": "08:00", "close": "20:00" },
+      "Saturday": { "open": "08:00", "close": "22:00" },
+      "Sunday": { "open": "08:00", "close": "22:00" }
+    },
+    "category": "plage"
+  },
+  {
     "name": "Gym Sainte-Maxime",
     "latitude": 43.3095,
     "longitude": 6.6378,
@@ -193,5 +208,45 @@
       "Saturday": { "open": "20:00", "close": "06:00" },
       "Sunday": { "open": "20:00", "close": "06:00" }
     }
+  },
+  {
+    "name": "Apéro Max St Tropez Livraison",
+    "latitude": 43.28320393686986,
+    "longitude": 6.6248293658889565,
+    "opening_hours": {
+      "Monday": {
+        "open": "19:00",
+        "close": "06:00"
+      },
+      "Tuesday": {
+        "open": "17:00",
+        "close": "20:00",
+        "lunch_break": {
+          "start": "19:00",
+          "end": "18:30"
+        }
+      },
+      "Wednesday": {
+        "open": "19:00",
+        "close": "06:00"
+      },
+      "Thursday": {
+        "open": "19:00",
+        "close": "06:00"
+      },
+      "Friday": {
+        "open": "19:00",
+        "close": "06:00"
+      },
+      "Saturday": {
+        "open": "19:00",
+        "close": "06:00"
+      },
+      "Sunday": {
+        "open": "19:00",
+        "close": "06:00"
+      }
+    },
+    "category": "plage"
   }
 ]

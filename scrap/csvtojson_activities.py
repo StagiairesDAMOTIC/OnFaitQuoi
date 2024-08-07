@@ -6,9 +6,10 @@ csv_file_path = 'activities_updated.csv'  # Remplace 'data.csv' par le chemin ve
 json_file_path = 'activities_updated.json'  # Remplace 'data.json' par le chemin vers ton fichier JSON de sortie
 
 # Colonnes à conserver
-selected_columns = ['name', 'location', 'image', 'Google Maps Link', 'Hours']  # Remplace par les colonnes souhaitées
+selected_columns = ['name', 'Google Maps Link', 'Hours']  # Remplace par les colonnes souhaitées
 
 def extract_lat_long(google_maps_link):
+     
     try:
         # Vérifier si le lien contient '='
         if '=' in google_maps_link:
@@ -18,8 +19,10 @@ def extract_lat_long(google_maps_link):
                 latitude, longitude = coords_part.split(',')
                 return float(latitude), float(longitude)
             else:
+                empty_coords.append(google_maps_link)
                 raise ValueError("Le lien ne contient pas les coordonnées attendues.")
         else:
+
             raise ValueError("Le lien ne contient pas le caractère '='.")
     except Exception as e:
         print(f"Erreur lors de l'extraction des coordonnées : {e} - Lien: {google_maps_link}")
@@ -27,24 +30,41 @@ def extract_lat_long(google_maps_link):
 
 def parse_hours(hours_str):
     try:
-        # Exemple de format attendu: "Lundi(09:00-18:00)/Mardi(09:00-18:00)/..."
         hours_parts = hours_str.split('/')
         hours_dict = {}
+
         for part in hours_parts:
             if part:
                 day, times = part.split('(')
                 day = day.strip()
                 times = times.strip(')')
+
                 if times == "Fermé":
                     hours_dict[day] = {"open": "00:00", "close": "00:00"}
+                elif times == "Inconnu":
+                    hours_dict[day] = {"open": "Inconnu", "close": "Inconnu"}
+                elif times == "Ouvert toute la journée et toute la nuit":
+                    hours_dict[day] = {"open": "00:00", "close": "23:59"}
                 else:
-                    open_time, close_time = times.split('-')
-                    hours_dict[day] = {"open": open_time, "close": close_time}
+                    time_slots = times.split('-')
+                    if len(time_slots) == 2:
+                        open_time, close_time = time_slots
+                        hours_dict[day] = {"open": open_time, "close": close_time}
+                    elif len(time_slots) == 4:
+                        open_time, lunch_start, lunch_end, close_time = time_slots
+                        hours_dict[day] = {
+                            "open": open_time,
+                            "close": close_time,
+                            "lunch_break": {"start": lunch_start, "end": lunch_end}
+                        }
+                    else:
+                        raise ValueError("Format d'heure invalide")
+
         return hours_dict
+
     except Exception as e:
         print(f"Erreur lors de l'extraction des horaires : {e} - Horaires: {hours_str}")
-        return {}
-
+        return None
 
 # Lire le fichier CSV et convertir en JSON avec les colonnes sélectionnées
 data = []
@@ -67,6 +87,9 @@ with open(csv_file_path, mode='r', encoding='utf-8') as csv_file:
             filtered_row['opening_hours'] = parse_hours(filtered_row['Hours'])
             del filtered_row['Hours']  # Supprimer l'ancienne colonne
         
+        # Ajouter la colonne "category" avec la valeur "plage"
+        filtered_row['category'] = 'plage'
+        
         data.append(filtered_row)
 
 # Écrire les données JSON dans le fichier
@@ -74,3 +97,4 @@ with open(json_file_path, mode='w', encoding='utf-8') as json_file:
     json.dump(data, json_file, indent=4, ensure_ascii=False)
 
 print(f"Les données des colonnes sélectionnées ont été extraites du fichier CSV et sauvegardées dans {json_file_path}.")
+
