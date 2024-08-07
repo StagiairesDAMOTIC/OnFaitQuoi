@@ -16,7 +16,7 @@ def extract_lat_long(google_maps_link):
             # Vérifier si la partie coords contient une virgule
             if ',' in coords_part:
                 latitude, longitude = coords_part.split(',')
-                return latitude, longitude
+                return float(latitude), float(longitude)
             else:
                 raise ValueError("Le lien ne contient pas les coordonnées attendues.")
         else:
