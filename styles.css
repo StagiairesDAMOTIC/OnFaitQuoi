@@ -36,12 +36,11 @@ body {
   font-size: 16px;
 }
 
-
 .main-menu {
   margin: 20px;
 }
-.main-menu img{
-  height: 4em ;
+.main-menu img {
+  height: 4em;
 }
 .burger-menu {
   display: none;
@@ -53,8 +52,8 @@ body {
 .selector {
   display: flex;
   flex-direction: row;
-  justify-content:unsafe center;
-  height: fit-content ;
+  justify-content: unsafe center;
+  height: fit-content;
   flex-wrap: wrap;
 }
 
