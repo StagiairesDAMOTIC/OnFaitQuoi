@@ -97,7 +97,7 @@ function showPosition(position) {
     title: "Vous êtes ici",
   });
 
-  fetch("activities_updated.json")
+  fetch("filtered_activities.json")
     .then((response) => response.json())
     .then((data) => {
       allActivities = data.map((activity) => {

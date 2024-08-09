@@ -3,13 +3,17 @@ import json
 
 # Chemins des fichiers
 csv_file_path = 'activities_updated.csv'  # Remplace 'data.csv' par le chemin vers ton fichier CSV
-json_file_path = 'activities_updated.json'  # Remplace 'data.json' par le chemin vers ton fichier JSON de sortie
+json_file_path = 'filtered_activities.json'  # Remplace 'data.json' par le chemin vers ton fichier JSON de sortie
 
 # Colonnes à conserver
-selected_columns = ['name','url','location','image', 'Google Maps Link', 'Hours']  # Remplace par les colonnes souhaitées
+selected_columns = ['name', 'url', 'location', 'image', 'Google Maps Link', 'Hours']  # Remplace par les colonnes souhaitées
+
+# Charger les villes depuis villes.json
+with open('villes.json', 'r', encoding='utf-8') as villes_file:
+    villes = json.load(villes_file)
+    liste_villes = list(villes.keys())
 
 def extract_lat_long(google_maps_link):
-     
     try:
         # Vérifier si le lien contient '='
         if '=' in google_maps_link:
@@ -19,10 +23,8 @@ def extract_lat_long(google_maps_link):
                 latitude, longitude = coords_part.split(',')
                 return float(latitude), float(longitude)
             else:
-                empty_coords.append(google_maps_link)
                 raise ValueError("Le lien ne contient pas les coordonnées attendues.")
         else:
-
             raise ValueError("Le lien ne contient pas le caractère '='.")
     except Exception as e:
         print(f"Erreur lors de l'extraction des coordonnées : {e} - Lien: {google_maps_link}")
@@ -67,34 +69,34 @@ def parse_hours(hours_str):
         return None
 
 # Lire le fichier CSV et convertir en JSON avec les colonnes sélectionnées
-data = []
+activites_filtrees = []
 with open(csv_file_path, mode='r', encoding='utf-8') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
-        # Filtrer les colonnes sélectionnées
-        filtered_row = {col: row[col] for col in selected_columns if col in row}
-        
-        # Extraire latitude et longitude et les ajouter au dictionnaire
-        if 'Google Maps Link' in filtered_row:
-            latitude, longitude = extract_lat_long(filtered_row['Google Maps Link'])
-            if latitude and longitude:
-                filtered_row['latitude'] = latitude
-                filtered_row['longitude'] = longitude
-            del filtered_row['Google Maps Link']  # Supprimer l'ancienne colonne
-        
-        # Convertir les horaires au format JSON souhaité
-        if 'Hours' in filtered_row:
-            filtered_row['opening_hours'] = parse_hours(filtered_row['Hours'])
-            del filtered_row['Hours']  # Supprimer l'ancienne colonne
-        
-        # Ajouter la colonne "category" avec la valeur "plage"
-        filtered_row['category'] = 'plage'
-        
-        data.append(filtered_row)
+        if row['location'] in liste_villes:  # Filtrer par localisation
+            # Filtrer les colonnes sélectionnées
+            filtered_row = {col: row[col] for col in selected_columns if col in row}
+            
+            # Extraire latitude et longitude et les ajouter au dictionnaire
+            if 'Google Maps Link' in filtered_row:
+                latitude, longitude = extract_lat_long(filtered_row['Google Maps Link'])
+                if latitude and longitude:
+                    filtered_row['latitude'] = latitude
+                    filtered_row['longitude'] = longitude
+                del filtered_row['Google Maps Link']  # Supprimer l'ancienne colonne
+            
+            # Convertir les horaires au format JSON souhaité
+            if 'Hours' in filtered_row:
+                filtered_row['opening_hours'] = parse_hours(filtered_row['Hours'])
+                del filtered_row['Hours']  # Supprimer l'ancienne colonne
+            
+            # Ajouter la colonne "category" avec la valeur "plage"
+            filtered_row['category'] = 'plage'
+            
+            activites_filtrees.append(filtered_row)
 
-# Écrire les données JSON dans le fichier
+# Écrire les données JSON filtrées dans le fichier
 with open(json_file_path, mode='w', encoding='utf-8') as json_file:
-    json.dump(data, json_file, indent=4, ensure_ascii=False)
+    json.dump(activites_filtrees, json_file, indent=4, ensure_ascii=False)
 
-print(f"Les données des colonnes sélectionnées ont été extraites du fichier CSV et sauvegardées dans {json_file_path}.")
-
+print(f"Les données filtrées ont été extraites du fichier CSV et sauvegardées dans {json_file_path}.")
