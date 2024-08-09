@@ -246,6 +246,7 @@ function showInfoWindow(activity) {
     <p>Catégorie: ${activity.category}</p>
     <p>${activity.distance.toFixed(2)} km</p>
     <p>${activity.isOpen ? "Ouvert" : "Fermé"}</p>
+    <p>Lien : <a href="${activity.url}" target="_blank">${activity.name}</a></p>
     <p>Contact: ${activity.contact}</p>
   `;
 

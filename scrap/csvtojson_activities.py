@@ -6,7 +6,7 @@ csv_file_path = 'activities_updated.csv'  # Remplace 'data.csv' par le chemin ve
 json_file_path = 'activities_updated.json'  # Remplace 'data.json' par le chemin vers ton fichier JSON de sortie
 
 # Colonnes à conserver
-selected_columns = ['name','image', 'Google Maps Link', 'Hours']  # Remplace par les colonnes souhaitées
+selected_columns = ['name','url','location','image', 'Google Maps Link', 'Hours']  # Remplace par les colonnes souhaitées
 
 def extract_lat_long(google_maps_link):
      
